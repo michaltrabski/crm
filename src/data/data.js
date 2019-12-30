@@ -2,23 +2,23 @@ const booking_date_from = "booking_date_from";
 const booking_date_to = "booking_date_to";
 const agent_code = "agent_code";
 
-const regex_date = /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/g;
-const regex_agent_code = /^[0-9]{5}$/g;
+const regex_date = /[*]/g;
+const regex_agent_code = /^[0-9]{5}((,[0-9]{5}){0,})?$/g;
 
 export const my_input = [
   {
     name: booking_date_from,
-    type: "text",
-    placeholder: "2019-01-01",
-    hint: "2019-01-01",
-    regex: regex_date
+    type: "date",
+    placeholder: "",
+    hint: "mm/dd/yyyy, np: 01/15/2020",
+    regex: ""
   },
   {
     name: booking_date_to,
-    type: "text",
+    type: "date",
     placeholder: "",
-    hint: "2019-12-31",
-    regex: regex_date
+    hint: "mm/dd/yyyy, np: 01/15/2020",
+    regex: ""
   },
   {
     name: agent_code,
@@ -55,6 +55,6 @@ export const reports = [
     short_desc: "3333",
     version: 1,
     excel_name: "333.xlsm",
-    fields: [agent_code]
+    fields: [booking_date_from]
   }
 ];

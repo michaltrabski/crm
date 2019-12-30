@@ -59,7 +59,7 @@ const Report = () => {
                     Skopiuj poniższy kod i wklej go do excela o nazwie:{" "}
                     {rep.excel_name}
                   </p>
-                  <textarea value={textArea}></textarea>
+                  <textarea value={textArea} readOnly></textarea>
                 </div>
               )}
             </>

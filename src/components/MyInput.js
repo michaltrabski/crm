@@ -8,19 +8,26 @@ const MyInput = ({ myInput, value, handleChange, testResult }) => {
 
   return (
     <div className="form-group">
-      <label htmlFor={id}>{name}</label>
+      <label htmlFor={id}>
+        {name} <small className="text-muted">Przykład: {hint}</small>
+      </label>
       <input
         type={type}
         name={name}
         value={value}
         placeholder={placeholder}
         onChange={e => handleChange(e, regex)}
-        className={`form-control border-${testResult ? `success` : `danger`}`}
+        className={`form-control ${setBorderColor(testResult)}`}
         id={id}
         aria-describedby={name}
       />
-      <small className="form-text text-muted">Przykład: {hint}</small>
     </div>
   );
+};
+
+const setBorderColor = testResult => {
+  let color = testResult ? `success` : `danger`;
+  console.log(testResult, color);
+  return `border-${color}`;
 };
 export default MyInput;

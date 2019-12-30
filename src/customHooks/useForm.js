@@ -13,7 +13,7 @@ export const useForm = (initialValues = {}) => {
     setReady(false);
     setTestResults({
       ...testResults,
-      [e.target.name]: regex.test(e.target.value)
+      [e.target.name]: regex === "" ? true : regex.test(e.target.value) //if no regex specified make test result always be true
     });
     setValues({
       ...values,
