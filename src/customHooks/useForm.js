@@ -1,23 +1,37 @@
 import { useState } from "react";
 
-export const useForm = initialValues => {
+export const useForm = (initialValues = {}) => {
   const [values, setValues] = useState(initialValues);
   const [testResults, setTestResults] = useState({});
+  const [ready, setReady] = useState(false);
+  const [textArea, setTextArea] = useState("");
+
+  // console.log(values);
 
   const handleChange = (e, regex) => {
-    console.log("test=", e.target.value, regex, regex.test(e.target.value));
+    // console.log("test=", e.target.value, regex, regex.test(e.target.value));
+    setReady(false);
     setTestResults({
       ...testResults,
       [e.target.name]: regex.test(e.target.value)
     });
-    setValues({ ...values, [e.target.name]: e.target.value });
+    setValues({
+      ...values,
+      [e.target.name]: e.target.value
+    });
   };
 
   const handleSubmit = e => {
     e.preventDefault();
 
-    console.log("handleSubmit", values, testResults);
+    // Object.keys(values).forEach(key => {
+    //   console.log(`${key} : ${values[key]}`);
+    // });
+
+    // console.log("handleSubmit", values, testResults);
+    setTextArea(JSON.stringify(values));
+    setReady(true);
   };
 
-  return { values, testResults, handleChange, handleSubmit };
+  return { values, testResults, ready, textArea, handleChange, handleSubmit };
 };

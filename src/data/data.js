@@ -2,24 +2,30 @@ const booking_date_from = "booking_date_from";
 const booking_date_to = "booking_date_to";
 const agent_code = "agent_code";
 
+const regex_date = /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/g;
+const regex_agent_code = /^[0-9]{5}$/g;
+
 export const my_input = [
   {
     name: booking_date_from,
     type: "text",
-    placeholder: "2017-04-18",
-    regex: /[a-z]/g
+    placeholder: "2019-01-01",
+    hint: "2019-01-01",
+    regex: regex_date
   },
   {
     name: booking_date_to,
     type: "text",
-    placeholder: "2030-04-18",
-    regex: /[a-z]/g
+    placeholder: "",
+    hint: "2019-12-31",
+    regex: regex_date
   },
   {
     name: agent_code,
     type: "text",
-    placeholder: "91145,32689",
-    regex: /[1-9]/g
+    placeholder: "",
+    hint: "91145,32689",
+    regex: regex_agent_code
   }
 ];
 

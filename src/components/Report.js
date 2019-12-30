@@ -14,8 +14,14 @@ const Report = () => {
     currentRep ? setRep(currentRep) : history.push("/");
   }, []);
 
-  const { values, handleChange, handleSubmit, testResults } = useForm({});
-  // console.log(testResults);
+  const {
+    values,
+    testResults,
+    ready,
+    textArea,
+    handleChange,
+    handleSubmit
+  } = useForm();
 
   return (
     rep && (
@@ -28,24 +34,35 @@ const Report = () => {
         <div>
           <h2>Parametry do wygenerowania raportu:</h2>
           {rep.fields ? (
-            <form onSubmit={handleSubmit}>
-              {rep.fields.map((field, i) => {
-                const myInput = my_input.find(item => item.name === field);
-                return (
-                  <MyInput
-                    key={i}
-                    myInput={myInput}
-                    value={values[myInput.name]}
-                    handleChange={handleChange}
-                    testResult={testResults[myInput.name]}
-                  />
-                );
-              })}
+            <>
+              <form onSubmit={handleSubmit}>
+                {rep.fields.map((field, i) => {
+                  const myInput = my_input.find(item => item.name === field);
+                  return (
+                    <MyInput
+                      key={i}
+                      myInput={myInput}
+                      value={values[myInput.name]}
+                      handleChange={handleChange}
+                      testResult={testResults[myInput.name]}
+                    />
+                  );
+                })}
 
-              <button type="submit" className="btn btn-primary">
-                Submit
-              </button>
-            </form>
+                <button type="submit" className="btn btn-primary">
+                  Submit
+                </button>
+              </form>
+              {ready && (
+                <div className="mt-5">
+                  <p>
+                    Skopiuj poniższy kod i wklej go do excela o nazwie:{" "}
+                    {rep.excel_name}
+                  </p>
+                  <textarea value={textArea}></textarea>
+                </div>
+              )}
+            </>
           ) : (
             <span className="text-danger">
               "Ten raport nie posiada zdefiniowanych parametrów. Napisz o tym do
