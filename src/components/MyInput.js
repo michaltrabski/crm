@@ -1,14 +1,15 @@
 import React from "react";
+import { my_input } from "../data/data";
 
-const InputText = ({ name }) => {
+const MyInput = ({ input }) => {
   const id = `id_${Math.floor(Math.random() * 9999999999) + 1}`;
-  let placeholder = "2019-09-01";
+  const { name, type, placeholder } = my_input.find(x => x.name === input);
 
   return (
     <div class="form-group">
       <label htmlFor={id}>{name}</label>
       <input
-        type="text"
+        type={type}
         name={name}
         placeholder={placeholder}
         class="form-control"
@@ -19,4 +20,4 @@ const InputText = ({ name }) => {
     </div>
   );
 };
-export default InputText;
+export default MyInput;

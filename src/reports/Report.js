@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { reports } from "../data/data";
 import { useLocation, useHistory } from "react-router-dom";
-import InputText from "../components/InputText";
+import MyInput from "../components/MyInput";
 
 const Report = () => {
   const [rep, setRep] = useState(false);
@@ -26,7 +26,7 @@ const Report = () => {
           {rep.fields ? (
             <form>
               {rep.fields.map(field => (
-                <InputText name={field} />
+                <MyInput input={field} />
               ))}
 
               <button type="submit" class="btn btn-primary">
