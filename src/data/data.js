@@ -3,9 +3,24 @@ const booking_date_to = "booking_date_to";
 const agent_code = "agent_code";
 
 export const my_input = [
-  { name: booking_date_from, type: "text", placeholder: "2017-04-18" },
-  { name: booking_date_to, type: "text", placeholder: "2030-04-18" },
-  { name: agent_code, type: "text", placeholder: "91145,32689" }
+  {
+    name: booking_date_from,
+    type: "text",
+    placeholder: "2017-04-18",
+    regex: /[a-z]/g
+  },
+  {
+    name: booking_date_to,
+    type: "text",
+    placeholder: "2030-04-18",
+    regex: /[a-z]/g
+  },
+  {
+    name: agent_code,
+    type: "text",
+    placeholder: "91145,32689",
+    regex: /[1-9]/g
+  }
 ];
 
 export const reports = [
@@ -27,5 +42,13 @@ export const reports = [
     excel_name:
       "GENERATOR_raport_2_raport_niepoprawnych danych na rezerwacjach.xlsm",
     fields: [booking_date_from, booking_date_to]
+  },
+  {
+    title: "333",
+    slug: "/raport-3",
+    short_desc: "3333",
+    version: 1,
+    excel_name: "333.xlsm",
+    fields: [agent_code]
   }
 ];

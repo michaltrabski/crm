@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <ul>
-      {reports.map(r => (
-        <li>
+      {reports.map((r, i) => (
+        <li key={i}>
           <h2>
             <Link to={r.slug}>{r.title}</Link>
           </h2>

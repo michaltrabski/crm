@@ -1,22 +1,26 @@
 import React from "react";
-import { my_input } from "../data/data";
 
-const MyInput = ({ input }) => {
+const MyInput = ({ myInput, value, handleChange, testResult }) => {
   const id = `id_${Math.floor(Math.random() * 9999999999) + 1}`;
-  const { name, type, placeholder } = my_input.find(x => x.name === input);
+  const { name, type, placeholder, regex } = myInput;
+
+  console.log("MyInput");
 
   return (
-    <div class="form-group">
+    <div className="form-group">
       <label htmlFor={id}>{name}</label>
       <input
         type={type}
         name={name}
+        value={value}
+        onChange={e => handleChange(e, regex)}
         placeholder={placeholder}
-        class="form-control"
+        className={`form-control border-${testResult ? `success` : `danger`}`}
         id={id}
         aria-describedby={name}
       />
-      <small class="form-text text-muted">{placeholder}</small>
+      <small className="form-text text-muted">Przykład: {placeholder}</small>
+      <small className="form-text text-muted">Przykład: {placeholder}</small>
     </div>
   );
 };
