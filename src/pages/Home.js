@@ -1,12 +1,10 @@
 import React from "react";
 import { reports } from "./../data/data";
 import { Link } from "react-router-dom";
-import MyDateInput from "../components/MyDateInput";
 
 const Home = () => {
   return (
     <>
-      <MyDateInput />
       <ul>
         {reports.map((r, i) => (
           <li key={i}>
