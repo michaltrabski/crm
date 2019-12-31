@@ -1,9 +1,9 @@
 import React from "react";
 
-const Modal = ({ hideModal, textArea, rep }) => {
+const Modal = ({ hideModal, outputValues, rep }) => {
   return (
     <div className="modal fade show d-block" tabIndex="-1" role="dialog">
-      <div className="modal-dialog" role="document">
+      <div className="modal-dialog modal-lg" role="document">
         <div className="modal-content">
           <div className="modal-header">
             <h5 className="modal-title">Wybrane parametry:</h5>
@@ -18,16 +18,17 @@ const Modal = ({ hideModal, textArea, rep }) => {
             </button>
           </div>
           <div className="modal-body">
+            <p>Skopiuj poniższy kod i wklej go do excela o nazwie:</p>
             <p>
-              Skopiuj poniższy kod i wklej go do excela o nazwie:{" "}
-              {rep.excel_name}
+              <strong>{rep.excel_name}</strong>
             </p>
             <form>
               <div class="form-group">
                 <textarea
                   className="form-control"
-                  value={textArea}
+                  value={JSON.stringify(outputValues)}
                   readOnly
+                  rows="8"
                 ></textarea>{" "}
               </div>
             </form>

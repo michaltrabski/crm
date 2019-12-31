@@ -5,7 +5,7 @@ const Nav = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
       <NavLink className="navbar-brand" to="/">
-        itaka-crm
+        raporty-crm
       </NavLink>
       <button
         className="navbar-toggler"

@@ -5,20 +5,16 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <>
-      <ul>
+      <h1>Lista dostępnych generatorów rapotów:</h1>
+      <div className="list-group">
         {reports.map((r, i) => (
-          <li key={i}>
-            <h2>
-              <Link to={r.slug}>{r.title}</Link>
-            </h2>
-            <p>{r.short_desc}</p>
-            <p className="text-secondary">
-              <span>Wersja: {r.version}</span>,{" "}
-              <span>Excel: {r.excel_name}</span>
-            </p>
-          </li>
+          <Link to={r.slug} className="list-group-item list-group-item-action">
+            <strong>{r.title}</strong>
+            <br />
+            <span>{r.short_desc}</span>
+          </Link>
         ))}
-      </ul>
+      </div>
     </>
   );
 };
