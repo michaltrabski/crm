@@ -4,8 +4,8 @@ const MyInput = ({ myInput, required, value, handleChange, testResult }) => {
   const id = `id_${Math.floor(Math.random() * 9999999999) + 1}`;
   const { name, type, placeholder, hint, regex } = myInput;
 
-  // console.log( myInput, required, value, handleChange, testResult );
-  console.log(myInput.name, testResult);
+  // console.log(value, testResult);
+  // console.log(myInput.name, testResult);
   return (
     <div className="form-group">
       <label htmlFor={id}>

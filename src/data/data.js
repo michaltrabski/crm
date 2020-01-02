@@ -5,7 +5,7 @@ export const agent_code_in = {
   name: "agent_code_in",
   type: "text",
   placeholder: "",
-  value: "",
+  value: "95096",
   hint: "91145,32689",
   regex: regex_agent_code_list
 };
@@ -14,7 +14,7 @@ export const agent_code_not_in = {
   name: "agent_code_not_in",
   type: "text",
   placeholder: "",
-  value: "",
+  value: "95096",
   hint: "91145,32689",
   regex: regex_agent_code_list
 };
@@ -87,8 +87,8 @@ export const reports = [
     version: 1,
     excel_name: "333.xlsm",
     fields: [
-      [agent_code_in, false],
-      [agent_code_not_in, true]
+      [agent_code_in, true],
+      [agent_code_not_in, false]
     ]
   }
 ];

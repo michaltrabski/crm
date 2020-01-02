@@ -5,7 +5,23 @@ import Modal from "./Modal";
 import { createOutputValue } from "./functions/functions";
 
 const Report = ({ report }) => {
-  console.log("Report = ", report);
+  console.log("Report = ", report.fields);
+
+  const initialValues = {};
+  report.fields.forEach(item => {
+    const [field, required] = item;
+    initialValues[field.name] = required ? field.value : "";
+  });
+
+  const initialTestResults = {};
+  report.fields.forEach(item => {
+    const [field, required] = item;
+    initialTestResults[field.name] = required ? true : "";
+  });
+
+  // console.log("initialValues", initialValues);
+  // console.log("initialTestResults", initialTestResults);
+
   const {
     values,
     testResults,
@@ -13,9 +29,9 @@ const Report = ({ report }) => {
     handleChange,
     handleSubmit,
     hideModal
-  } = useForm();
+  } = useForm(initialValues, initialTestResults);
 
-  // console.log("testResults", testResults);
+  console.log("Report = ", values, testResults);
   return (
     report && (
       <>
