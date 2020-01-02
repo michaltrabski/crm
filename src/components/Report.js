@@ -1,21 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { reports, my_input, all_inputs } from "../data/data";
-import { useLocation, useHistory } from "react-router-dom";
 import MyInput from "./MyInput";
 import { useForm } from "./../customHooks/useForm";
 import Modal from "./Modal";
 import { createOutputValue } from "./functions/functions";
 
-const Report = () => {
-  const [rep, setRep] = useState(false);
-  let { pathname } = useLocation();
-  let history = useHistory();
-
-  useEffect(() => {
-    let currentRep = reports.find(rep => rep.slug === pathname);
-    currentRep ? setRep(currentRep) : history.push("/");
-  }, []);
-
+const Report = ({ report }) => {
+  console.log("Report = ", report);
   const {
     values,
     testResults,
@@ -23,29 +13,29 @@ const Report = () => {
     handleChange,
     handleSubmit,
     hideModal
-  } = useForm(all_inputs, all_inputs);
+  } = useForm();
 
   // console.log("testResults", testResults);
   return (
-    rep && (
+    report && (
       <>
-        <h1>Tytuł: {rep.title}</h1>
-        <p>Krótki opis: {rep.short_desc}</p>
+        <h1>Tytuł: {report.title}</h1>
+        <p>Krótki opis: {report.short_desc}</p>
         {/* <p>pathname = {JSON.stringify(pathname)}</p>
         <p>rep = {JSON.stringify(rep)}</p> */}
 
         <div className="row">
           <div className="col-md-8">
             <h2>Parametry do wygenerowania raportu:</h2>
-            {rep.fields.length > 0 ? (
+            {report.fields.length > 0 ? (
               <form onSubmit={handleSubmit}>
-                {rep.fields.map((field, i) => {
-                  const myInput = my_input.find(item => item.name === field[0]);
+                {report.fields.map((field, i) => {
+                  const [myInput, required] = field;
                   return (
                     <MyInput
                       key={i}
                       myInput={myInput}
-                      required={field[1] === 1 ? true : false}
+                      required={required}
                       value={values[myInput.name]}
                       handleChange={handleChange}
                       testResult={testResults[myInput.name]}
@@ -67,8 +57,8 @@ const Report = () => {
         {ready && (
           <Modal
             hideModal={hideModal}
-            value={createOutputValue(values, rep)}
-            rep={rep}
+            value={createOutputValue(values, report)}
+            rep={report}
           />
         )}
         {/* {JSON.stringify(outputValues)} */}

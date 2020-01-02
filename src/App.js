@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import Report from "./components/Report";
 import Nav from "./components/Nav";
+import ReportWrapper from "./components/ReportWrapper";
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
           <div className="col">
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route path={`/:id`} component={Report} />
+              <Route path={`/:id`} component={ReportWrapper} />
             </Switch>
           </div>
         </div>

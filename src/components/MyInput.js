@@ -5,7 +5,7 @@ const MyInput = ({ myInput, required, value, handleChange, testResult }) => {
   const { name, type, placeholder, hint, regex } = myInput;
 
   // console.log( myInput, required, value, handleChange, testResult );
-  // console.log(myInput.name, testResult);
+  console.log(myInput.name, testResult);
   return (
     <div className="form-group">
       <label htmlFor={id}>
