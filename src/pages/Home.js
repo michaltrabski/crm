@@ -1,5 +1,5 @@
 import React from "react";
-import { reports } from "./../data/data";
+import { reports } from "./../data/reports";
 import { Link } from "react-router-dom";
 
 const Home = () => {

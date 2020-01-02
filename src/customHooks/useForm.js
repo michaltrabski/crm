@@ -12,9 +12,6 @@ export const useForm = (initialValues = {}, initialTestResults = {}) => {
     if (regex !== "") {
       let val = e.target.value;
       let result = regex.test(val);
-      // console.log(
-      //   `handleChange: name=${e.target.name} result=${result} required=${required}`
-      // );
 
       // id value in field is an empty string "" and field is not required then as result return an empty string ""
       if (val === "" && !required) result = "";
@@ -32,14 +29,20 @@ export const useForm = (initialValues = {}, initialTestResults = {}) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    // console.log("e", e);
-
-    console.log("values", values);
     console.log("testResults", testResults);
 
+    let ok = true;
     // validate all inputs again before submit
-    return;
-    setReady(true);
+    // ie any value of testResults property is false then deny to send form
+    Object.keys(testResults).forEach(e => {
+      // console.log(`key=${e} value=${testResults[e]}`);
+      if (testResults[e] === false) {
+        alert("popraw formularz");
+        ok = false;
+      }
+    });
+
+    if (ok) setReady(true);
   };
 
   const hideModal = () => {

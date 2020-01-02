@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { reports } from "../data/data";
+import { reports } from "../data/reports";
 import { useLocation, useHistory } from "react-router-dom";
 import Report from "./Report";
 
