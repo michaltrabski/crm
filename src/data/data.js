@@ -74,8 +74,8 @@ export const reports = [
     version: 1,
     excel_name: "333.xlsm",
     fields: [
-      [agent_code_in, 1],
-      [agent_code_not_in, 0]
+      [agent_code_in, 0],
+      [agent_code_not_in, 1]
     ]
   }
 ];

@@ -1,6 +1,6 @@
 import React from "react";
 
-const Modal = ({ hideModal, outputValues, rep }) => {
+const Modal = ({ hideModal, value, rep }) => {
   return (
     <div className="modal fade show d-block" tabIndex="-1" role="dialog">
       <div className="modal-dialog modal-lg" role="document">
@@ -23,10 +23,10 @@ const Modal = ({ hideModal, outputValues, rep }) => {
               <strong>{rep.excel_name}</strong>
             </p>
             <form>
-              <div class="form-group">
+              <div className="form-group">
                 <textarea
                   className="form-control"
-                  value={JSON.stringify(outputValues)}
+                  value={value}
                   readOnly
                   rows="8"
                 ></textarea>{" "}

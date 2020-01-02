@@ -8,7 +8,11 @@ const Home = () => {
       <h1>Lista dostępnych generatorów rapotów:</h1>
       <div className="list-group">
         {reports.map((r, i) => (
-          <Link to={r.slug} className="list-group-item list-group-item-action">
+          <Link
+            to={r.slug}
+            key={i}
+            className="list-group-item list-group-item-action"
+          >
             <strong>{r.title}</strong>
             <br />
             <span>{r.short_desc}</span>

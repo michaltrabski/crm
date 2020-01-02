@@ -5,7 +5,7 @@ const MyInput = ({ myInput, required, value, handleChange, testResult }) => {
   const { name, type, placeholder, hint, regex } = myInput;
 
   // console.log( myInput, required, value, handleChange, testResult );
-  console.log(myInput.name, testResult);
+  // console.log(myInput.name, testResult);
   return (
     <div className="form-group">
       <label htmlFor={id}>
@@ -22,7 +22,7 @@ const MyInput = ({ myInput, required, value, handleChange, testResult }) => {
         name={name}
         value={value}
         placeholder={placeholder}
-        onChange={e => handleChange(e, regex)}
+        onChange={e => handleChange(e, regex, required)}
         className={`form-control ${setBorderColor(testResult)}`}
         id={id}
         aria-describedby={name}
@@ -33,7 +33,7 @@ const MyInput = ({ myInput, required, value, handleChange, testResult }) => {
 
 const setBorderColor = testResult => {
   let color = testResult ? `success` : `danger`;
-  if (testResult === "") color = "";
+  if (testResult === "" || testResult === undefined) color = "";
 
   // console.log(`testResult=${testResult}`);
 

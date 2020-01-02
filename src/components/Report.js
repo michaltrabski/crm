@@ -4,6 +4,7 @@ import { useLocation, useHistory } from "react-router-dom";
 import MyInput from "./MyInput";
 import { useForm } from "./../customHooks/useForm";
 import Modal from "./Modal";
+import { createOutputValue } from "./functions/functions";
 
 const Report = () => {
   const [rep, setRep] = useState(false);
@@ -22,15 +23,9 @@ const Report = () => {
     handleChange,
     handleSubmit,
     hideModal
-  } = useForm(all_inputs);
+  } = useForm(all_inputs, all_inputs);
 
-  let outputValues = values;
-  outputValues.excel_name = rep.excel_name;
-  Object.keys(outputValues).forEach(
-    key => outputValues[key] === "" && delete outputValues[key]
-  );
-  // console.log(values, testResults, ready, textArea);
-
+  // console.log("testResults", testResults);
   return (
     rep && (
       <>
@@ -70,7 +65,11 @@ const Report = () => {
           </div>
         </div>
         {ready && (
-          <Modal hideModal={hideModal} outputValues={outputValues} rep={rep} />
+          <Modal
+            hideModal={hideModal}
+            value={createOutputValue(values, rep)}
+            rep={rep}
+          />
         )}
         {/* {JSON.stringify(outputValues)} */}
       </>
